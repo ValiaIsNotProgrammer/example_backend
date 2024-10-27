@@ -1,5 +1,10 @@
 ## Setup
 
+Взять репу
+```bash
+git clone https://github.com/ValiaIsNotProgrammer/example_backend.git
+```
+
 **Для использования нужно создать .env файл**
 ```bash
 cat .env.example > .env
