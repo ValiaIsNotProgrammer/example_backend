@@ -1,0 +1,32 @@
+services:
+  web:
+    build: .
+    container_name: fastapi_app
+    volumes:
+      - .:/app
+    ports:
+      - "${RUN__PORT}:${RUN__PORT}"
+    depends_on:
+      - db
+    command: >
+      sh -c "
+      alembic upgrade head && 
+      if [ \"RUN__DEBUG\" = \"true\" ]; then 
+        uvicorn main:app --host ${RUN__HOST} --port ${RUN__PORT} --reload; 
+      else 
+        uvicorn main:app --host ${RUN__HOST} --port ${RUN__PORT}; 
+      fi"
+
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=${DB__USER}
+      - POSTGRES_PASSWORD=${DB__PASSWORD}
+      - POSTGRES_DB=${DB__NAME}
+    expose:
+      - ${DB__PORT}
+
+volumes:
+  postgres_data:

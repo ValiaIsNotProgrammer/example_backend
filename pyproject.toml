@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "example-backend-fastapi"
+version = "0.1.0"
+description = ""
+authors = ["valiaisnotprogrammer <ValiaChernykh@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.3"
+uvicorn = "^0.32.0"
+loguru = "^0.7.2"
+psycopg2-binary = "^2.9.10"
+sqlalchemy = {extras = ["asynio"], version = "^2.0.36"}
+pydantic-settings = "^2.6.0"
+pyjwt = "^2.9.0"
+alembic = "^1.13.3"
+asyncpg = "^0.30.0"
+ujson = "^5.10.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
